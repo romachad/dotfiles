@@ -22,6 +22,8 @@ alias cgrep='grep --color=always'
 alias ssh='ssh -e "+"'
 #alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias wanip='wget -qO- http://ipecho.net/plain | xargs echo'
+alias v='nvim'
+alias dotfiles="/urs/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 #alias dul='data=$(ls -l|sed '1d'|awk 'BEGIN { OFS="" ; ORS="" } ; { for ( i=9; i<NF; i++ ) print $i " "; print $NF "\n" }'); printf '%s\n' "$data" | while IFS= read -r line ; do du -sh "$line"; done'
  
 #alias table='iptables -L -vn --line-numbers'
