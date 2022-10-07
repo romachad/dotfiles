@@ -9,6 +9,7 @@ alias mv='mv -i'
 ############
 #My aliases#
 ############
+alias ls='ls --color=auto'
 alias ll='ls -alh --color=auto'
 alias la='ls -alrth --color=auto'
 alias psg='ps -ef | grep -v grep| grep --color=auto'
@@ -52,6 +53,7 @@ table(){
 #End of My aliases#
 ###################
 export HISTTIMEFORMAT="%d/%m/%y %T "
+export EDITOR=/usr/bin/nvim
 #[date]username@hostname# (green, red date, green until @, yellow hostname, green #)
 
 #for ROOT
