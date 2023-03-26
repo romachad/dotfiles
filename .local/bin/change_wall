@@ -1,0 +1,44 @@
+#!/bin/bash
+#Time to change (in seconds)
+t1=1200
+t2=1080
+t3=1140
+t4=1020
+
+#Monitors:
+Vert="DP-5"
+UW="HDMI-0"
+HD="DVI-I-0"
+UW2="DP-2"
+
+#Path to Wallpapers
+Up=~/Wallpapers/Up/
+Wide=~/Wallpapers/for_ultra/
+Normal=~/Wallpapers/Normal/
+
+#Set the time counter
+t_wp1=$(date +%s)
+t_wp2=$t_wp1
+t_wp3=$t_wp1
+t_wp4=$t_wp1
+
+#change all wallpapers
+wp1=$(ls $Up|shuf -n 1)
+wp2=$(ls $Wide|shuf -n 1)
+wp3=$(ls $Normal|shuf -n 1)
+wp4=$(ls $Wide|shuf -n 1)
+#Apply the WPs
+xwallpaper --output $Vert --maximize $Up$wp1 --output $UW --maximize $Wide$wp2 --output $HD --maximize $Normal$wp3 --output $UW2 --maximize $Wide$wp4
+
+while true
+do
+	[ $(date +%s) -ge $(( $t_wp1 + $t1 )) ] && wp1=$(ls $Up|grep -v $wp1|shuf -n 1) && xwallpaper --output $Vert --maximize $Up$wp1 --output $UW --maximize $Wide$wp2 --output $HD --maximize $Normal$wp3 --output $UW2 --maximize $Wide$wp4 && t_wp1=$(date +%s)
+
+	[ $(date +%s) -ge $(( $t_wp2 + $t2 )) ] && wp2=$(ls $Wide|grep -v $wp2|shuf -n 1) && xwallpaper --output $Vert --maximize $Up$wp1 --output $UW --maximize $Wide$wp2 --output $HD --maximize $Normal$wp3 --output $UW2 --maximize $Wide$wp4 && t_wp2=$(date +%s)
+
+	[ $(date +%s) -ge $(( $t_wp3 + $t3 )) ] && wp3=$(ls $Normal|grep -v $wp3|shuf -n 1) && xwallpaper --output $Vert --maximize $Up$wp1 --output $UW --maximize $Wide$wp2 --output $HD --maximize $Normal$wp3 --output $UW2 --maximize $Wide$wp4 && t_wp3=$(date +%s)
+
+	[ $(date +%s) -ge $(( $t_wp4 + $t4 )) ] && wp4=$(ls $Wide|grep -v $wp4|shuf -n 1) && xwallpaper --output $Vert --maximize $Up$wp1 --output $UW --maximize $Wide$wp2 --output $HD --maximize $Normal$wp3 --output $UW2 --maximize $Wide$wp4 && t_wp4=$(date +%s)
+
+	sleep 1
+done
